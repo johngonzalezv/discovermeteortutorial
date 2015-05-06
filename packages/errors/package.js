@@ -20,7 +20,7 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('johngonzalez:errors');
-  api.addFiles('errors-tests.js');
+  api.use(['tinytest', 'test-helpers'], 'client');
+  api.use('johngonzalez:errors', 'client');
+  api.addFiles('errors-tests.js', 'client');
 });
