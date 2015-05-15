@@ -1,5 +1,11 @@
 Template.postsList.onRendered(function() {
   this.find('.wrapper')._uihooks = {
+    insertElement: function(node, next) {
+      $(node)
+        .hide()
+        .insertBefore(next)
+        .fadeIn();
+    },
     moveElement: function (node, next) {
       // node is the element intends move. next is the next of future position
       var $node = $(node), $next=$(next);
@@ -34,6 +40,11 @@ Template.postsList.onRendered(function() {
       // reset evething to 0, animated
       $(node).addClass('animate').css('top', 0);
       $inBetween.addClass('animate').css('top', 0);
+    },
+    removeElement: function(node) {
+      $(node).fadeOut(function() {
+        $(this).remove();
+      });
     }
   }
 });
